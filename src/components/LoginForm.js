@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { emailChanged, passwordChanged, loginRequest } from '../actions';
-import { Card, CardSection, Input, Button, Spinner, Header } from './common';
+import { Card, CardSection, Input, Spinner, Header } from './common';
+import { Button } from 'react-native-elements'
 
 class LoginForm extends Component {
     onEmailChange(text) {
@@ -24,14 +25,17 @@ class LoginForm extends Component {
         }
 
         return (
-            <Button onPress={this.onButtonPress.bind(this)}>
-                Login
-            </Button>
+            <Button
+                title="Login"
+                onPress={this.onButtonPress.bind(this)} 
+                borderRadius={25}
+            />
         );
     }
 
     render() {
         return (
+            
             <Card>
                 <CardSection>
                     <Input 
@@ -56,9 +60,7 @@ class LoginForm extends Component {
                     {this.props.error}
                 </Text>
 
-                <CardSection>
-                    {this.renderButton()}
-                </CardSection>
+                {this.renderButton()}
 
             </Card>
         );
